@@ -1,0 +1,14 @@
+[Unit]
+Description=Desktop wallpaper service
+PartOf=graphical-session.target
+Requires=graphical-session.target
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/swww init --no-daemon
+StandardError=journal
+Restart=always
+RestartSec=1s
+
+[Install]
+WantedBy=sway-session.target

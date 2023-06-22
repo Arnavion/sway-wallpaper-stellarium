@@ -1,0 +1,13 @@
+[Unit]
+Description=Desktop wallpaper generator service
+PartOf=sway-session.target
+Requires=sway-session.target
+After=sway-session.target
+
+[Service]
+ExecStart=%h/.local/lib/sway-wallpaper-stellarium.sh
+EnvironmentFile=%h/.config/wallpaper-stellarium.env
+StandardError=journal
+SyslogLevel=err
+Restart=on-failure
+RestartSec=5s

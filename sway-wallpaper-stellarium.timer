@@ -1,0 +1,9 @@
+[Unit]
+Description=Desktop wallpaper generator service
+
+[Timer]
+OnCalendar=*:00/15
+Persistent=true
+
+[Install]
+WantedBy=sway-session.target

@@ -1,0 +1,54 @@
+// Ref: https://stellarium.org/doc/23.0/scripting.html
+
+var lat = parseFloat(core.getEnv("LAT"));
+var lon = parseFloat(core.getEnv("LON"));
+
+core.setGuiVisible(false);
+core.setMinFps(1);
+core.setMaxFps(1);
+core.setObserverLocation(lon, lat, 0, 0, "", "");
+core.setProjectionMode("ProjectionCylinderFill");
+core.setRealTime();
+core.setSkyCulture("modern");
+
+LandscapeMgr.setCurrentLandscapeID("zero");
+LandscapeMgr.setFlagAtmosphere(false);
+LandscapeMgr.setFlagCardinalPoints(true);
+LandscapeMgr.setFlagFog(false);
+LandscapeMgr.setFlagIllumination(false);
+LandscapeMgr.setFlagLabels(false);
+LandscapeMgr.setFlagLandscape(false);
+
+SporadicMeteorMgr.setFlagShow(false);
+SporadicMeteorMgr.setZHR(0);
+
+SolarSystem.setFlagHints(false);
+SolarSystem.setFlagLabels(true);
+SolarSystem.setFlagLightTravelTime(true);
+SolarSystem.setFlagOrbits(false);
+SolarSystem.setFlagShowObjSelfShadows(true);
+SolarSystem.setFlagTrails(false);
+SolarSystem.setFlagUseObjModels(true);
+
+SolarSystem.setFlagMoonScale(false);
+SolarSystem.setFlagPlanetScale(false);
+SolarSystem.setFlagSunScale(false);
+
+StarMgr.setFlagLabels(false);
+
+StelSkyDrawer.setFlagStarMagnitudeLimit(false);
+StelSkyDrawer.setFlagStarSpiky(false);
+StelSkyDrawer.setFlagTwinkle(false);
+StelSkyDrawer.setFlagLuminanceAdaptation(false)
+StelSkyDrawer.setLightPollutionLuminance(0);
+
+while (core.getScreenWidth() != 3840 || core.getScreenHeight() != 1200) {
+	core.debug("wallpaper.ssc: Waiting for window size...");
+	core.wait(1);
+}
+core.debug("wallpaper.ssc: Sleeping 10s for render...");
+core.wait(10);
+core.debug("wallpaper.ssc: Taking screenshot...");
+core.screenshot("wallpaper", false, "", true, "png");
+core.debug("wallpaper.ssc: Exiting...");
+core.quitStellarium();

@@ -2,6 +2,8 @@
 
 var lat = parseFloat(core.getEnv("LAT"));
 var lon = parseFloat(core.getEnv("LON"));
+var windowWidth = parseFloat(core.getEnv("WINDOW_WIDTH"));
+var windowHeight = parseFloat(core.getEnv("WINDOW_HEIGHT"));
 
 core.setGuiVisible(false);
 core.setMinFps(1);
@@ -42,7 +44,7 @@ StelSkyDrawer.setFlagTwinkle(false);
 StelSkyDrawer.setFlagLuminanceAdaptation(false)
 StelSkyDrawer.setLightPollutionLuminance(0);
 
-while (core.getScreenWidth() != 3840 || core.getScreenHeight() != 1200) {
+while (core.getScreenWidth() != windowWidth || core.getScreenHeight() != windowHeight) {
 	core.debug("wallpaper.ssc: Waiting for window size...");
 	core.wait(1);
 }

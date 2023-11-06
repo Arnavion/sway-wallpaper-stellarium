@@ -35,7 +35,7 @@ swaymsg -q 'for_window [app_id = "org.stellarium.stellarium"] move scratchpad';
     swaymsg -q "[app_id = \"org.stellarium.stellarium\"] resize set width $(( x_max - x_min )) px height $(( y_max - y_min )) px"
 ) &
 
-cpulimit -f -l 10 -m -- \
+WINDOW_WIDTH="$(( x_max - x_min ))" WINDOW_HEIGHT="$(( y_max - y_min ))" cpulimit -f -l 10 -m -- \
     stellarium \
         --full-screen no \
         --screenshot-dir "$XDG_RUNTIME_DIR" \
